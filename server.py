@@ -9,3 +9,10 @@ port = 8080
 server.bind ((host, port))
 server.listen (2)
 print ("server is listening for incoming connections")
+
+while True:
+    conn,address = server.accept()
+    print (f"connection received from {str(address)}")
+    msg = "Connection established\r\n"
+    conn.send(msg.encode('ascii'))
+    conn.close()
